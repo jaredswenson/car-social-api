@@ -45,6 +45,10 @@ export const initUserModel = (sequelize: Sequelize) => {
           isEmail: true,
         },
       },
+      deleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

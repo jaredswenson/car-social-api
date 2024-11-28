@@ -13,18 +13,6 @@ const options = {
   },
 };
 
-<<<<<<< Updated upstream
-const syslogOptions: SyslogTransportOptions = {
-  level: loggingLevel,
-  host: papertrailOptions.host,
-  port: papertrailOptions.port,
-  protocol: "udp4",
-  localhost: "open-house-api",
-  eol: "\n",
-};
-
-=======
->>>>>>> Stashed changes
 export const logger: Logger = createLogger({
   level: loggingLevel,
   exitOnError: false,
