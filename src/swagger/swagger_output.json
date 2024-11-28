@@ -1,0 +1,34 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "v1.0.0",
+    "title": "Open House API",
+    "description": "API to power Brivity Open House App"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/health/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
