@@ -1,17 +1,3 @@
-// import { Sequelize } from "sequelize";
-
-// const sequelize = new Sequelize(
-//   process.env.DB_NAME || "car_social_dev",
-//   process.env.DB_USER || "your_username",
-//   process.env.DB_PASS || "your_password",
-//   {
-//     host: process.env.DB_HOST || "127.0.0.1",
-//     dialect: "postgres",
-//   }
-// );
-
-// export default sequelize;
-
 import { Sequelize } from "sequelize";
 import {
   dbHost,
@@ -21,8 +7,9 @@ import {
   dbPassword,
 } from "../configs/environment";
 import { logger } from "../configs/logger";
-import { initUserModel } from "../models/User";
-import { initPasswordModel } from "../models/Password";
+import { initUserModel } from "../models/User/User";
+import { initPasswordModel } from "../models/Auth/Password";
+import { initResetCodeModel } from "../models/Auth/ResetCode";
 
 console.log(dbHost, dbPort, dbName, dbUser, dbPassword);
 let sequelize = new Sequelize(
@@ -36,11 +23,13 @@ let sequelize = new Sequelize(
 
 initUserModel(sequelize);
 initPasswordModel(sequelize);
+initResetCodeModel(sequelize);
 
 const connect = async () => {
   try {
     await sequelize.authenticate();
     logger.info("Postgres connection has been established successfully.");
+    //Don't keep this forever
     sequelize.sync({ alter: true });
   } catch (error) {
     logger.error("Unable to connect to the database:", error);
