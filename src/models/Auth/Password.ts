@@ -2,7 +2,7 @@ import { Model, DataTypes, Sequelize } from "sequelize";
 
 export default class Password extends Model {
   public uuid!: string;
-  public userId!: string;
+  public userUuid!: string;
   public password!: string;
 
   // Timestamps
